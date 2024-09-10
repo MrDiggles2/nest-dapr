@@ -6,20 +6,23 @@
   "tags": [],
   "targets": {
     "serve": {
-      "executor": "@nx/js:node",
-      "defaultConfiguration": "development",
-      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "//": "The build-watch is separated from the running process because the Dapr sidecar must restart if subscriptions change. nodemon is used to restart dapr+app whenever the built files changes.",
       "options": {
-        "buildTarget": "backend:build",
-        "runBuildTargetDependencies": false
-      },
-      "configurations": {
-        "development": {
-          "buildTarget": "backend:build:development"
-        },
-        "production": {
-          "buildTarget": "backend:build:production"
-        }
+        "commands": [
+          "pnpm exec nx run backend:build --watch",
+          "bin/wait-for-file.sh dist/apps/backend/main.js 60 && pnpm exec nodemon --delay 1 --watch dist/apps/backend/ --exec 'nx run backend:x-serve'"
+        ],
+        "parallel": true
+      }
+    },
+    "x-serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "bin/wait-or-kill-port.sh ${BACKEND_DAPR_HTTP_PORT:-3101} 1 && pnpm exec dotenv-load dapr run --log-level error --app-id usp-backend --app-port ${BACKEND_DAPR_APP_PORT:-3102} --app-protocol http --dapr-http-port ${BACKEND_DAPR_HTTP_PORT:-3101} --config dapr/config.yaml --resources-path dapr/components/ -- node dist/apps/backend/main.js"
+        ],
+        "parallel": false
       }
     }
   }

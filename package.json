@@ -2,7 +2,10 @@
   "name": "@nest-dapr/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "start": "bin/start.sh"
+  },
+  "packageManager": "pnpm@9.7.1",
   "private": true,
   "devDependencies": {
     "@nestjs/schematics": "^10.0.1",
@@ -23,10 +26,12 @@
     "@types/node": "~18.16.9",
     "@typescript-eslint/eslint-plugin": "^7.16.0",
     "@typescript-eslint/parser": "^7.16.0",
+    "dotenv-load": "^3.0.0",
     "eslint": "~8.57.0",
     "eslint-config-prettier": "^9.0.0",
     "jest": "^29.7.0",
     "jest-environment-node": "^29.7.0",
+    "nodemon": "^3.1.4",
     "nx": "19.7.1",
     "prettier": "^2.6.2",
     "ts-jest": "^29.1.0",

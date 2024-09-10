@@ -1,0 +1,41 @@
+services:
+  redis:
+    image: redis
+    command: [ 'redis-server', '--save', '60 1']
+    ports:
+      - 6378:6379
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 60s
+      retries: 5
+      start_period: 5s
+
+  dapr-scheduler:
+    image: "daprio/dapr:1.14.2"
+    entrypoint: ["./scheduler"]
+    command: ["--etcd-data-dir=/var/lock/dapr/scheduler"]
+    ports:
+      - "52379:2379"
+      - "50006:50006"
+      - "58081:8080"
+      - "59091:9090"
+
+  dapr-placement:
+    image: "daprio/dapr:1.14.2"
+    command: ["./placement"]
+    ports:
+      - "50005:50005"
+      - "58080:8080"
+      - "59090:9090"
+
+  # Tracing observability for Dapr events. Go to localhost:9411 to see UI
+  dapr-zipkin:
+    image: openzipkin/zipkin:3.4.1
+    ports:
+      - 9411:9411
+
+volumes:
+  redis_data:
