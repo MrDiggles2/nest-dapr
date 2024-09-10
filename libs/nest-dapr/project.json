@@ -1,0 +1,9 @@
+{
+  "name": "nest-dapr",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/nest-dapr/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project nest-dapr --web",
+  "targets": {}
+}
