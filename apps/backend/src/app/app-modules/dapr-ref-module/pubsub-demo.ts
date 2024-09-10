@@ -18,9 +18,9 @@ export class PubsubDemo {
   /**
    * Attaches a subscriber to the topic "orders" on "pubsub"
    *
-   * Only one handler is allowed per topic since Dapr wants to centralize error handling. If you need this event to
-   * spread out across the backend, you can use https://docs.nestjs.com/techniques/events to dispatch events here and
-   * listen elsewhere.
+   * Only one handler is allowed per topic since Dapr wants to centralize error handling on a per app basis. If you need
+   * this event to spread out across the backend, you can use https://docs.nestjs.com/techniques/events to dispatch
+   * events here and listen elsewhere.
    *
    * You can trigger this manually with
    *    curl -X POST http://localhost:3101/v1.0/publish/pubsub/orders -H "Content-Type: application/json" -d '{"orderId": "100"}'
@@ -30,12 +30,8 @@ export class PubsubDemo {
   async handleOrdersTopic(payload: any) {
     this.logger.log(`handleOrdersTopic: ${JSON.stringify(payload)}`);
 
-    // Add stuff to aidbox
-
     // Post additional message to pubsub via Dapr
     this.pubsub.publish('order-complete', String(Date.now()));
-
-    // Add things to key-value store/database via Dapr
   }
 
   @DaprSubscribe({ topic: 'order-complete' })

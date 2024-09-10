@@ -8,7 +8,7 @@ export type DaprSubscribeOptions = {
    * Specify how to continue if the handler fails:
    *
    * * DaprPubSubStatusEnum.DROP: Don't retry and move message to dead letter topic if configured
-   * * DaprPubSubStatusEnum.RETRY: Retry on failure. If retries are exhausted, move message to dead letter topic if configured
+   * * DaprPubSubStatusEnum.RETRY: Default. Retry on failure. If retries are exhausted, move message to dead letter topic if configured
    */
   failMethod?: DaprPubSubStatusEnum;
   deadLetterTopic?: string;
@@ -34,7 +34,7 @@ export class DaprPubsub<T extends string | object | undefined = any> {
     callback: DaprSubscribeCallback<T>,
     options?: DaprSubscribeOptions
   ): Promise<void> => {
-    const { deadLetterTopic, failMethod = DaprPubSubStatusEnum.SUCCESS } =
+    const { deadLetterTopic, failMethod = DaprPubSubStatusEnum.RETRY } =
       options ?? {};
 
     await this.server.pubsub.subscribeWithOptions(this.pubsubName, topic, {
