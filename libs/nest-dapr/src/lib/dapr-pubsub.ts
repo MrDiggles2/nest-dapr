@@ -1,15 +1,30 @@
-import { DaprClient, DaprServer } from '@dapr/dapr';
-import { PubSubSubscriptionOptionsType } from '@dapr/dapr/types/pubsub/PubSubSubscriptionOptions.type';
+import { DaprClient, DaprServer, DaprPubSubStatusEnum } from '@dapr/dapr';
+import { Logger } from '@nestjs/common';
 
 export type DaprSubscribeCallback<T> = (payload: T) => Promise<void>;
 
+export type DaprSubscribeOptions = {
+  /**
+   * Specify how to continue if the handler fails:
+   *
+   * * DaprPubSubStatusEnum.DROP: Don't retry and move message to dead letter topic if configured
+   * * DaprPubSubStatusEnum.RETRY: Retry on failure. If retries are exhausted, move message to dead letter topic if configured
+   */
+  failMethod?: DaprPubSubStatusEnum;
+  deadLetterTopic?: string;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export class DaprPubsub<T extends string | object | undefined = any> {
+  private logger: Logger;
+
   constructor(
     public server: DaprServer,
     public client: DaprClient,
-    public pubsubName: string,
-  ) {}
+    public pubsubName: string
+  ) {
+    this.logger = new Logger(`${DaprPubsub.name}(${pubsubName})`);
+  }
 
   /**
    * Subscribe to a topic with options.
@@ -17,9 +32,25 @@ export class DaprPubsub<T extends string | object | undefined = any> {
   public subscribe = async (
     topic: string,
     callback: DaprSubscribeCallback<T>,
-    options: PubSubSubscriptionOptionsType = {},
+    options?: DaprSubscribeOptions
   ): Promise<void> => {
-    await this.server.pubsub.subscribeWithOptions(this.pubsubName, topic, { ...options, callback });
+    const { deadLetterTopic, failMethod = DaprPubSubStatusEnum.SUCCESS } =
+      options ?? {};
+
+    await this.server.pubsub.subscribeWithOptions(this.pubsubName, topic, {
+      deadLetterTopic,
+      callback: async (payload) => {
+        try {
+          await callback(payload);
+          return DaprPubSubStatusEnum.SUCCESS;
+        } catch (error) {
+          this.logger.error(
+            `Handler errored with ${error}. Using fail method "${failMethod}".`
+          );
+          return failMethod;
+        }
+      },
+    });
   };
 
   /**

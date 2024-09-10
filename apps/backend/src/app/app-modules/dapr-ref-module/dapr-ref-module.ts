@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { DaprModule } from '@libs/nest-dapr';
 import { PubsubDemo } from './pubsub-demo';
+import { PubsubErrorHandlingDemo } from './pubsub-error-handling-demo';
 
 @Module({
   imports: [
@@ -9,6 +10,6 @@ import { PubsubDemo } from './pubsub-demo';
       pubsubName: 'pubsub',
     }),
   ],
-  providers: [PubsubDemo],
+  providers: [PubsubDemo, PubsubErrorHandlingDemo],
 })
 export class DaprRefModule {}
