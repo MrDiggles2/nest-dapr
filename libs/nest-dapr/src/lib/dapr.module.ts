@@ -66,7 +66,7 @@ export class DaprModule {
 
         const client = new DaprClient(clientOptions);
 
-        return new DaprWrapperService(server, new DaprClient(clientOptions));
+        return new DaprWrapperService(server, client);
       },
       inject: [getSharedConfigToken()],
     };
