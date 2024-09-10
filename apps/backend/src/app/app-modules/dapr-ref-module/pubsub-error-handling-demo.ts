@@ -23,8 +23,10 @@ export class PubsubErrorHandlingDemo {
     options: {
       // Optional, if not provided, message will be dropped
       deadLetterTopic: 'dead-letter-topic',
-      // Instructs Dapr to retry before publishing the message to the dead letter topic
+      // Instructs Dapr to retry before publishing it to DLT
       failMethod: DaprPubSubStatusEnum.RETRY,
+      // Instructs Dapr to not retry and publish it into the DLT if configured
+      // failMethod: DaprPubSubStatusEnum.DROP,
     },
   })
   async handleFlakyTopic(payload: FlakyTopicPayload) {

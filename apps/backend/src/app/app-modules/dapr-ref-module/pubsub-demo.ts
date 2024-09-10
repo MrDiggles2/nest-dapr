@@ -1,5 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { DaprPubsub, DaprSubscribe, DaprSubscriber, InjectDaprPubSub } from '@libs/nest-dapr';
+import { InjectDaprClient } from 'libs/nest-dapr/src/lib/helpers';
 
 @Injectable()
 // Declares that this class should be able to subscribe to the pubsub named "pubsub" (see dapr/components/redis-pubsub.yaml)

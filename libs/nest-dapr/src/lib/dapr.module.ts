@@ -6,7 +6,7 @@ import { DaprPubsub } from './dapr-pubsub';
 import { DaprWrapperService } from './dapr-wrapper.service';
 import { DAPR_MODULE_ID } from './dapr.constants';
 import { DaprExplorer } from './dapr.explorer';
-import { getPubSubToken, getSharedConfigToken, getSharedWrapperToken } from './helpers';
+import { getPubSubToken, getSharedClientToken, getSharedConfigToken, getSharedWrapperToken } from './helpers';
 
 interface DaprModuleConfig {
   server: {
@@ -64,6 +64,8 @@ export class DaprModule {
           communicationProtocol: CommunicationProtocolEnum.HTTP,
         });
 
+        const client = new DaprClient(clientOptions);
+
         return new DaprWrapperService(server, new DaprClient(clientOptions));
       },
       inject: [getSharedConfigToken()],
@@ -98,6 +100,23 @@ export class DaprModule {
       imports: [DaprModule.registerCore()],
       providers: [pubsubProvider, { provide: DAPR_MODULE_ID, useValue: randomUUID() }],
       exports: [pubsubProvider],
+    };
+  }
+
+  static registerClient(): DynamicModule {
+    const clientProvider: Provider<DaprClient> = {
+      provide: getSharedClientToken(),
+      useFactory: (wrapperService: DaprWrapperService) => {
+        return wrapperService.getClient();
+      },
+      inject: [getSharedWrapperToken()],
+    };
+
+    return {
+      module: DaprModule,
+      imports: [DaprModule.registerCore()],
+      providers: [clientProvider],
+      exports: [clientProvider],
     };
   }
 }
