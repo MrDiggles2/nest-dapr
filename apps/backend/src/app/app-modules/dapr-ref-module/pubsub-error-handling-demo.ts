@@ -18,6 +18,10 @@ export class PubsubErrorHandlingDemo {
 
   constructor(@InjectDaprPubSub('pubsub') private pubsub: DaprPubsub<string>) {}
 
+  /**
+   * You can trigger this manually with
+   *    curl -X POST http://localhost:3101/v1.0/publish/pubsub/flaky-topic -H "Content-Type: application/json" -d '{"shouldError": true}'
+   */
   @DaprSubscribe({
     topic: 'flaky-topic',
     options: {
