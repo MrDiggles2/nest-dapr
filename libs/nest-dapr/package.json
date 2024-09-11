@@ -1,6 +1,6 @@
 {
-  "name": "@mrdiggles/nest-dapr",
-  "version": "0.0.4",
+  "name": "@mrdiggles2/nest-dapr",
+  "version": "0.0.5",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "files": [
