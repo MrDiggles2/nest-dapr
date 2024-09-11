@@ -1,6 +1,6 @@
 {
   "name": "@mrdiggles/nest-dapr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/nest-dapr/index.js",
   "types": "dist/nest-dapr/index.d.ts",
   "files": [
@@ -9,6 +9,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {
-  }
+  "peerDependencies": {}
 }
