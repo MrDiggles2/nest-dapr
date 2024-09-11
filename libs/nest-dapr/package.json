@@ -1,6 +1,6 @@
 {
   "name": "@mrdiggles2/nest-dapr",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "files": [
@@ -9,5 +9,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "peerDependencies": {}
+  "peerDependencies": {
+    "@dapr/dapr": "^3.4.0",
+    "@nestjs/common": "^10.0.2",
+    "@nestjs/core": "^10.0.2"
+  }
 }
