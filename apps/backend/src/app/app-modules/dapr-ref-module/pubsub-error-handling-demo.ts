@@ -1,10 +1,8 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { DaprPubSubStatusEnum } from '@dapr/dapr';
 import {
-  DaprPubsub,
   DaprSubscribe,
   DaprSubscriber,
-  InjectDaprPubSub,
 } from '@libs/nest-dapr';
 
 interface FlakyTopicPayload {
@@ -16,7 +14,7 @@ interface FlakyTopicPayload {
 export class PubsubErrorHandlingDemo {
   private logger = new Logger(PubsubErrorHandlingDemo.name);
 
-  constructor(@InjectDaprPubSub('pubsub') private pubsub: DaprPubsub<string>) {}
+  constructor() {}
 
   /**
    * You can trigger this manually with
