@@ -1,6 +1,6 @@
 {
   "name": "@mrdiggles/nest-dapr",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/libs/nest-dapr/index.js",
   "types": "dist/libs/nest-dapr/index.d.ts",
   "files": [
