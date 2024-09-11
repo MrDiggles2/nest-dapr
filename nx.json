@@ -14,6 +14,9 @@
     ],
     "sharedGlobals": []
   },
+  "release": {
+    "projects": ["libs/nest-dapr"]
+  },
   "plugins": [
     {
       "plugin": "@nx/webpack/plugin",
@@ -35,5 +38,12 @@
         "targetName": "test"
       }
     }
-  ]
+  ],
+  "targetDefaults": {
+    "@nx/js:swc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
 }

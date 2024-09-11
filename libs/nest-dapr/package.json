@@ -1,10 +1,10 @@
 {
   "name": "@mrdiggles/nest-dapr",
-  "version": "0.0.2",
-  "main": "dist/nest-dapr/index.js",
-  "types": "dist/nest-dapr/index.d.ts",
+  "version": "0.0.3",
+  "main": "dist/libs/nest-dapr/index.js",
+  "types": "dist/libs/nest-dapr/index.d.ts",
   "files": [
-    "dist/nest-dapr"
+    "dist/libs/nest-dapr"
   ],
   "publishConfig": {
     "access": "public"
