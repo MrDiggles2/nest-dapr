@@ -1,8 +1,12 @@
 {
   "name": "@mrdiggles2/nest-dapr",
-  "version": "0.2.6",
+  "version": "0.2.9",
   "main": "./index.js",
-  "types": "./index.d.ts",
+  "files": [
+    "index.*",
+    "README.md",
+    "lib/"
+  ],
   "peerDependencies": {
     "@dapr/dapr": "^3.4.0",
     "@nestjs/common": "^10.0.2",

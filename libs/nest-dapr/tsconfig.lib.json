@@ -11,6 +11,6 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["lib/**/*.ts"],
+  "include": ["lib/**/*.ts", "index.ts"],
   "exclude": ["jest.config.ts", "lib/**/*.spec.ts", "lib/**/*.test.ts"]
 }

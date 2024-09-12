@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@libs/nest-dapr": ["libs/nest-dapr/index.ts"]
+      "@libs/nest-dapr": ["libs/nest-dapr"]
     }
   },
   "exclude": ["node_modules", "tmp"]

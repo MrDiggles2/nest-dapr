@@ -11,6 +11,9 @@ importers:
       '@dapr/dapr':
         specifier: ^3.4.0
         version: 3.4.0
+      '@mrdiggles2/nest-dapr':
+        specifier: ^0.2.9
+        version: 0.2.9(@dapr/dapr@3.4.0)(@nestjs/common@10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.1.14)(rxjs@7.8.1))
       '@nestjs/common':
         specifier: ^10.0.2
         version: 10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1)
@@ -1038,6 +1041,13 @@ packages:
   '@mole-inc/bin-wrapper@8.0.1':
     resolution: {integrity: sha512-sTGoeZnjI8N4KS+sW2AN95gDBErhAguvkw/tWdCjeM8bvxpz5lqrnd0vOJABA1A+Ic3zED7PYoLP/RANLgVotA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+
+  '@mrdiggles2/nest-dapr@0.2.9':
+    resolution: {integrity: sha512-vQmX2DB2pmSATmvWao9MvPptjHTPPoq48wEuCTN7cqE/J7SzX4Qib6gsKaYEePU5E9inlJihn1N7AwsgdmrINw==}
+    peerDependencies:
+      '@dapr/dapr': ^3.4.0
+      '@nestjs/common': ^10.0.2
+      '@nestjs/core': ^10.0.2
 
   '@napi-rs/wasm-runtime@0.2.4':
     resolution: {integrity: sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ==}
@@ -6663,6 +6673,12 @@ snapshots:
       filenamify: 5.1.1
       got: 11.8.6
       os-filter-obj: 2.0.0
+
+  '@mrdiggles2/nest-dapr@0.2.9(@dapr/dapr@3.4.0)(@nestjs/common@10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/core@10.4.1(@nestjs/common@10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.1.14)(rxjs@7.8.1))':
+    dependencies:
+      '@dapr/dapr': 3.4.0
+      '@nestjs/common': 10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1)
+      '@nestjs/core': 10.4.1(@nestjs/common@10.4.1(reflect-metadata@0.1.14)(rxjs@7.8.1))(@nestjs/platform-express@10.4.1)(reflect-metadata@0.1.14)(rxjs@7.8.1)
 
   '@napi-rs/wasm-runtime@0.2.4':
     dependencies:
