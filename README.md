@@ -6,7 +6,7 @@ A NestJS module for Dapr along with a reference application.
 - [NestJS](https://nestjs.com/)
 - [NX](https://nx.dev/)
 
-See https://www.npmjs.com/package/@mrdiggles2/nest-dapr to install just the package.
+See the [module documentation](libs/nest-dapr/README.md) to install just the package.
 
 ## Getting started
 
