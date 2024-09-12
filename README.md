@@ -87,9 +87,3 @@ $> curl -X POST http://localhost:3000/api/client-demo/lock/1/release
 $> curl -X POST http://localhost:3000/api/client-demo/lock/1/release
 {"result":"Lock 1 does not exist"}
 ```
-
-### To release
-
-```
-nx release
-```
