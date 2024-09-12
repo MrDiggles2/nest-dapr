@@ -1,6 +1,6 @@
 {
   "name": "@mrdiggles2/nest-dapr",
-  "version": "0.2.10",
+  "version": "1.0.0",
   "main": "./index.js",
   "files": [
     "index.*",
