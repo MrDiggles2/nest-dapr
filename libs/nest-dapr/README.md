@@ -14,7 +14,7 @@ $ npm install --save @mrdiggles/nest-dapr
 
 1. Install and set up Dapr as described here: https://docs.dapr.io/getting-started
     * Note: this library uses [programmatic subscriptions](https://docs.dapr.io/developing-applications/building-blocks/pubsub/subscription-methods/#programmatic-subscriptions)
-    * You can reference this [sample project](https://github.com/Umbrage-Studios/nestjs-dapr/tree/main/apps/backend)
+    * You can reference this [sample project](https://github.com/MrDiggles2/nest-dapr/tree/main/apps/backend)
 2. Configure the `DaprModule` in your root module
 
 ```ts

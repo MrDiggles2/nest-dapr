@@ -5,6 +5,21 @@
   "scripts": {
     "start": "bin/start.sh"
   },
+  "description": "NestJS module for Dapr with a reference application",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:MrDiggles2/nest-dapr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrDiggles2/nest-dapr/issues"
+  },
+  "homepage": "https://github.com/MrDiggles2/nest-dapr#readme",
+  "keywords": [
+    "dapr",
+    "nest",
+    "nestjs",
+    "typescript"
+  ],
   "packageManager": "pnpm@9.7.1",
   "private": true,
   "devDependencies": {

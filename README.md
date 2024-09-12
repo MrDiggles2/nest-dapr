@@ -1,10 +1,12 @@
 # Nest+Dapr
 
-This is a demonstration of how Dapr can be used with NestJS + NX.
+A NestJS module for Dapr along with a reference application.
 
 - [Dapr](https://dapr.io/)
 - [NestJS](https://nestjs.com/)
 - [NX](https://nx.dev/)
+
+See https://www.npmjs.com/package/@mrdiggles2/nest-dapr to install just the package.
 
 ## Getting started
 
