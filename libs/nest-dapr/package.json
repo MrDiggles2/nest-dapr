@@ -7,6 +7,21 @@
     "README.md",
     "lib/"
   ],
+  "description": "NestJS module for Dapr with a reference application",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/MrDiggles2/nest-dapr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrDiggles2/nest-dapr/issues"
+  },
+  "homepage": "https://github.com/MrDiggles2/nest-dapr#readme",
+  "keywords": [
+    "dapr",
+    "nest",
+    "nestjs",
+    "typescript"
+  ],
   "peerDependencies": {
     "@dapr/dapr": "^3.4.0",
     "@nestjs/common": "^10.0.2",
