@@ -1,4 +1,4 @@
-## Downloads:
+## Dapr
 
 [Dapr](https://docs.dapr.io/getting-started/install-dapr-cli/)
 
